@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GondaiDelivery</string>
+    <string name="access_token">pk.eyJ1IjoiZ29uZGFpbWdhbm8iLCJhIjoiY2o1bzliODF6M2V5eTMycnkxbnlxYTNuZCJ9.Ms9dA_2_yr17KEcdZc3abA</string>
+   <!--Please make sure to enter your IP address(xx.xxx.xxx.xxx) where mockApi
+   is running do not enter forward slash or backslash
+   at the end of this string -->
+    <string name="base_url">http://190.166.67.257:8080/deliveries</string>
+</resources>
