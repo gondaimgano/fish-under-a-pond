@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"> <!-- add for accessing the static ip address and port -->
+        > <!-- add for accessing the static ip address and port -->
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".components.main.MainActivity" />
         <activity android:name=".components.detail.DetailActivity" />
-        <activity android:name=".components.error.ErrorActivity"></activity>
+
     </application>
 
 </manifest>
