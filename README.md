@@ -1,2 +1,2 @@
 # fish-under-a-pond
-I had fun do this. Thank you for the opportunity!
+I had fun do this. Thank you for the opportunity! Android and Kotlin wow!
