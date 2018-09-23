@@ -23,17 +23,17 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
 
+          val a =this.application as App
 
-
-        Mapbox.getInstance(this, this.getString(R.string.access_token));
+        Mapbox.getInstance(this, this.getString(R.string.access_token))
 
         setContentView(R.layout.activity_detail)
 
 
         textdetail1.apply {
-            text=App.currentItem.description
+            text=a.newItem.description
         }
-        Glide.with(this).load(App.currentItem.imageUrl).into(imagedetail1)
+        Glide.with(this).load(a.newItem.imageUrl).into(imagedetail1)
         mapView1.getMapAsync(this)
     }
 
@@ -71,7 +71,7 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(p0: MapboxMap) {
 
-val latlng_=LatLng(App.currentItem.location.lat,App.currentItem.location.lng)
+val latlng_=LatLng((this.application as App).newItem.location.lat,(this.application as App).newItem.location.lng)
                p0.addMarker(
                        MarkerOptions()
                                .position(latlng_)

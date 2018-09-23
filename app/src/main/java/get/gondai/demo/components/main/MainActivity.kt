@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+         val a= this.application as App
         //initialize the adapter
         adapter_ = DeliveryListAdapter{
-            App.currentItem=it
+           a.newItem=it
 
-            if(App.currentItem==it)
+            if(a.newItem==it)
               startActivity(Intent(this,DetailActivity::class.java))
         }
         //initialize recycler view
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        App.networkStatus.observe(this, Observer {
+        a.newStatus.observe(this, Observer {
             progressBar3.visibility=View.VISIBLE
         Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
         })

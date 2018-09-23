@@ -18,7 +18,7 @@ class MainViewModel(app:Application):AndroidViewModel(app){
     var callback: DeliveryBoundaryCallback
 init {
 
-    App.networkStatus= MutableLiveData()
+    (app.applicationContext as App).newStatus= MutableLiveData()
     callback= DeliveryBoundaryCallback(app.applicationContext)
     val config= PagedList.Config.Builder()
             .setPageSize(DeliveryUtil.OFFSET)
@@ -36,6 +36,6 @@ init {
 }
 fun removeObservers(){
     deliverLineUp.removeObserver {  }
-    App.networkStatus.removeObserver {  }
+    (getApplication() as App).newStatus.removeObserver {  }
 }
 }

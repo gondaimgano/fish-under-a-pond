@@ -22,38 +22,40 @@ import io.reactivex.schedulers.Schedulers
 *
 * **/
 class DeliveryBoundaryCallback(var _ctx:Context):PagedList.BoundaryCallback<DeliveryItem>() {
-
+lateinit var _app:App
     override fun onItemAtEndLoaded(itemAtEnd: DeliveryItem) {
         super.onItemAtEndLoaded(itemAtEnd)
+      _app = _ctx as App
         requestNetwork(itemAtEnd.id) //continue with the rest from the network
     }
 
     override fun onZeroItemsLoaded() {
         super.onZeroItemsLoaded()
-        App.currentOffset=0 //set first record
-        requestNetwork(App.currentOffset)
+        _app = _ctx as App
+        _app.newOffset.offset=0 //set first record
+        requestNetwork(_app.newOffset.offset)
     }
 
     fun requestNetwork(_currentPositon:Long)
     {
 
-        App.currentOffset=_currentPositon
+        _app.newOffset.offset=_currentPositon
 
 
 
-          Volley.newRequestQueue(_ctx).add(StringRequest(_ctx.getString(R.string.base_url) + "?offset=${App.currentOffset}&limit=${DeliveryUtil.LIMIT}",
+          Volley.newRequestQueue(_ctx).add(StringRequest(_ctx.getString(R.string.base_url) + "?offset=${_app.newOffset.offset}&limit=${DeliveryUtil.LIMIT}",
                   Response.Listener {
 
                       //user @see GsonBuilder convert to from json to array objects of DeliveryItem
                       val deliveries = GsonBuilder().create().fromJson(it, Array<DeliveryItem>::class.java)
                       saveOffline(deliveries.toList())
-                      App.currentOffset = App.currentOffset + DeliveryUtil.OFFSET
+                      _app.newOffset.offset = _app.newOffset.offset + DeliveryUtil.OFFSET
 
                   },
                   Response.ErrorListener {
 
                     //when error send a message display progressbar and retry...
-                      App.networkStatus.postValue("Trying to connect...")
+                      _app.newStatus.postValue("Trying to connect...")
                       requestNetwork(_currentPositon)
 
 
