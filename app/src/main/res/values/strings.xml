@@ -5,4 +5,7 @@
    is running do not enter forward slash or backslash
    at the end of this string -->
     <string name="base_url">https://mock-api-mobile.dev.lalamove.com/deliveries</string>
+    <string name="delivery_list">Delivery List</string>
+    <string name="gondai_s_delivery_app">Gondai\'s Delivery App</string>
+    <string name="todo">TODO</string>
 </resources>
