@@ -1,5 +1,5 @@
 # fish-under-a-pond
-I had fun do this. Thank you for the opportunity! Android and Kotlin wow!
+I had fun doing this. Thank you for the opportunity! Android and Kotlin wow!
 
 This app focuses on retrieving a consuming a json query via a https link.
 
